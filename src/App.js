@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router';
 import './App.css';
 import rockGlass from './images/rockGlass.svg';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Login from './pages/Login';
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
         Glass
       </object>
       <Switch>
-        <Route exact path="/" />
+        <Route exact path="/" component={ Login } />
         <Route exact path="/comidas" />
         <Route exact path="/bebidas" />
         <Route exact path="/comidas/{id-da-receita}" />
