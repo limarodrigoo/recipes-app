@@ -16,7 +16,6 @@ export default function FormsLogin() {
   };
 
   const handleInputChange = ({ target: { value, id } }) => {
-    console.log(value);
     const newInput = { ...loginInput };
     newInput[id] = value;
     setLogin(newInput);
@@ -31,6 +30,7 @@ export default function FormsLogin() {
         data-testid="email-input"
         placeholder="email"
         onChange={ handleInputChange }
+        value={ loginInput.email }
       />
       <input
         type="password"
