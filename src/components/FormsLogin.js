@@ -4,13 +4,14 @@ import LoginContext from '../context/LoginContext';
 export default function FormsLogin() {
   const { loginInput, setLogin } = useContext(LoginContext);
 
-  const validateLogin = () => {
-    const { email, password } = loginInput;
-    const maxLength = 5;
+  const validateLogin = (newInput) => {
+    const { email, password } = newInput;
+    const maxLength = 6;
+    const validatePassword = password.length >= maxLength;
+    console.log(password.length);
     const validateEmail = /.+@.+\.com/i.test(email);
-    if (validateEmail && password.length > maxLength) {
-      const newInput = { ...loginInput };
-      newInput.btn = false;
+    if (validateEmail && validatePassword) {
+      newInput.btn = !newInput.btn;
       setLogin(newInput);
     }
   };
@@ -19,7 +20,7 @@ export default function FormsLogin() {
     const newInput = { ...loginInput };
     newInput[id] = value;
     setLogin(newInput);
-    validateLogin();
+    validateLogin(newInput);
   };
 
   return (
@@ -38,6 +39,7 @@ export default function FormsLogin() {
         data-testid="password-input"
         placeholder="senha"
         onChange={ handleInputChange }
+        value={ loginInput.password }
       />
       <button
         type="button"

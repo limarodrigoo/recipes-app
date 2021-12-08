@@ -30,3 +30,31 @@ describe('3- Checa a possibilidade de escrever email no campo correspondente',
       expect(email.value).toBe('email@teste.com');
     });
   });
+describe('4- Checa a possibilidade de escrever a senha no campo correspondente', () => {
+  test('Verifica funcionalidade do input  de email', () => {
+    renderWithRouter(<App />);
+
+    const password = screen.getByTestId('password-input');
+
+    userEvent.type(password, '123456');
+    expect(password).toBeInTheDocument();
+    expect(password.value).toBe('123456');
+  });
+});
+describe('5- Verifica funcionamento do botão', () => {
+  test('Verifica se o botão está habilitado', () => {
+    renderWithRouter(<App />);
+
+    const email = screen.getByTestId('email-input');
+    const password = screen.getByTestId('password-input');
+
+    userEvent.type(email, 'email@teste.com');
+    userEvent.type(password, '123456');
+
+    expect(email).toBeInTheDocument();
+    expect(email.value).toBe('email@teste.com');
+
+    expect(password).toBeInTheDocument();
+    expect(password.value).toBe('123456');
+  });
+});
