@@ -15,14 +15,12 @@ function App() {
       >
         Glass
       </object>
-
       <Switch>
         <Route exact path="/" />
         <Route exact path="/comidas" />
         <Route exact path="/bebidas" />
         <Route exact path="/comidas/{id-da-receita}" />
         <Route exact path="/bebidas/{id-da-receita}" />
-        <Route exact path="/comidas/{id-da-receita}/in-progress" />
         <Route exact path="/comidas/{id-da-receita}/in-progress" />
         <Route exact path="/bebidas/{id-da-receita}/in-progress" />
         <Route exact path="/explorar" />
