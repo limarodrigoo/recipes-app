@@ -1,14 +1,14 @@
 import React from 'react';
 import Header from '../components/Header';
 
-class MealPage extends React.Component {
+class DoneMeals extends React.Component {
   render() {
     return (
       <div>
-        <Header title="Comidas" showButton />
+        <Header title="Receitas Feitas" showButton={ false } />
       </div>
     );
   }
 }
 
-export default MealPage;
+export default DoneMeals;
