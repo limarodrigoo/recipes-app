@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import LoginContext from '../context/LoginContext';
 
 export default function FormsLogin() {
@@ -7,8 +8,7 @@ export default function FormsLogin() {
   const validateLogin = (newInput) => {
     const { email, password } = newInput;
     const maxLength = 6;
-    const validatePassword = password.length >= maxLength;
-    console.log(password.length);
+    const validatePassword = password.length > maxLength;
     const validateEmail = /.+@.+\.com/i.test(email);
     if (validateEmail && validatePassword) {
       newInput.btn = !newInput.btn;
@@ -41,14 +41,16 @@ export default function FormsLogin() {
         onChange={ handleInputChange }
         value={ loginInput.password }
       />
-      <button
-        type="button"
-        data-testid="login-submit-btn"
-        disabled={ loginInput.btn }
-      >
-        Entrar
+      <Link to="/comidas">
+        <button
+          type="button"
+          data-testid="login-submit-btn"
+          disabled={ loginInput.btn }
+        >
+          Entrar
 
-      </button>
+        </button>
+      </Link>
     </form>
   );
 }
