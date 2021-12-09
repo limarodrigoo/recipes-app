@@ -23,6 +23,13 @@ export default function FormsLogin() {
     validateLogin(newInput);
   };
 
+  const saveLocalStorage = () => {
+    const user = { email: loginInput.email };
+    localStorage.setItem('mealsToken', 1);
+    localStorage.setItem('cocktailsToken', 1);
+    localStorage.setItem('user', JSON.stringify(user));
+  };
+
   return (
     <form>
       <input
@@ -45,6 +52,7 @@ export default function FormsLogin() {
         <button
           type="button"
           data-testid="login-submit-btn"
+          onClick={ saveLocalStorage }
           disabled={ loginInput.btn }
         >
           Entrar
