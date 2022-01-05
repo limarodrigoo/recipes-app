@@ -14,6 +14,7 @@ import SearchByArea from './pages/SearchByArea';
 import ProfilePage from './pages/ProfilePage';
 import FavoriteMeals from './pages/FavoriteMeals';
 import DoneMeals from './pages/DoneMeals';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
         <Route exact path="/receitas-feitas" component={ DoneMeals } />
         <Route exact path="/receitas-favoritas" component={ FavoriteMeals } />
       </Switch>
+      <Footer />
     </div>
   );
 }
