@@ -15,7 +15,6 @@ export default function Ingredients(props) {
       console.log(ingredient);
     }
   }
-  console.log(ingredients);
   return (
     <ol>
       {ingredients.map((ingredient, index) => (
