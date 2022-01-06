@@ -1,14 +1,38 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import Header from '../components/Header';
 
-class ExploreDrink extends React.Component {
-  render() {
-    return (
-      <div>
-        <Header title="Explorar Bebidas" showButton={ false } />
-      </div>
-    );
-  }
-}
+function ExploreDrink() {
+  const [randomDrink, setRandomDrink] = useState({});
+  const getApi = async () => {
+    const request = await fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php');
+    const requestJson = await request.json();
+    setRandomDrink(...requestJson.drinks, randomDrink);
+  };
+  useEffect(() => {
+    getApi();
+  });
 
+  return (
+    <>
+      <Header />
+      <Link to="/explorar/bebidas/ingredientes">
+        <button
+          type="button"
+          data-testid="explore-by-ingredient"
+        >
+          Por Ingredientes
+        </button>
+      </Link>
+      <Link to={ `/bebidas/${randomDrink.idDrink}` }>
+        <button
+          type="button"
+          data-testid="explore-surprise"
+        >
+          Me Surpreenda!
+        </button>
+      </Link>
+    </>
+  );
+}
 export default ExploreDrink;
