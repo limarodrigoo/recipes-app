@@ -11,8 +11,9 @@ export default function MealDetails(props) {
   function getVideoId(url) {
     const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
     const match = url.match(regExp);
+    const maxIdLength = 11;
 
-    return (match && match[2].length === 11)
+    return (match && match[2].length === maxIdLength)
       ? match[2]
       : null;
   }

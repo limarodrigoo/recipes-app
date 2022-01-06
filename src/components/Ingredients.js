@@ -10,10 +10,12 @@ export default function Ingredients(props) {
     const indexMeasure = `strMeasure${i}`;
     const ingredient = data[indexIngredient];
     const measure = data[indexMeasure];
-    if (ingredient !== '' && ingredient !== null) {
+    if (ingredient !== '' && ingredient !== null && ingredient !== undefined) {
       ingredients.push([ingredient, measure]);
+      console.log(ingredient);
     }
   }
+  console.log(ingredients);
   return (
     <ol>
       {ingredients.map((ingredient, index) => (
