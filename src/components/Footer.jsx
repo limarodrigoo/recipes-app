@@ -3,7 +3,7 @@ import { useHistory, useLocation } from 'react-router-dom/cjs/react-router-dom.m
 import drinkImage from '../images/drinkIcon.svg';
 import exploreImage from '../images/exploreIcon.svg';
 import mealImage from '../images/mealIcon.svg';
-import '../App.css';
+import '../css/Footer.css';
 
 function Footer() {
   const history = useHistory();
@@ -24,7 +24,7 @@ function Footer() {
       history.push('/explorar');
       break;
     case 'food':
-      history.push('/drinks');
+      history.push('/comidas');
       break;
     default:
       console.log('caso suspeito');
@@ -34,45 +34,33 @@ function Footer() {
   const footerResult = (
     <div data-testid="footer" className="footer">
       <button
+        id="drinks"
         name="drink"
         type="button"
+        aria-label="drinks"
         data-testid="drinks-bottom-btn"
         src={ drinkImage }
         onClick={ handleClick }
-      >
-        <object
-          type="image/svg+xml"
-          data={ drinkImage }
-        >
-          Drinks
-        </object>
-      </button>
+        className="drinkButton"
+      />
       <button
         name="explore"
         type="button"
+        aria-label="explore"
         data-testid="explore-bottom-btn"
         src={ exploreImage }
-      >
-        <object
-          type="image/svg+xml"
-          data={ exploreImage }
-        >
-          Explore
-        </object>
-      </button>
+        onClick={ handleClick }
+        className="mealButton"
+      />
       <button
         name="food"
         type="button"
+        aria-label="food"
         data-testid="food-bottom-btn"
+        onClick={ handleClick }
         src={ mealImage }
-      >
-        <object
-          type="image/svg+xml"
-          data={ mealImage }
-        >
-          Meals
-        </object>
-      </button>
+        className="exploreButton"
+      />
     </div>
   );
 

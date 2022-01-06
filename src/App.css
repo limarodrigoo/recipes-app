@@ -16,14 +16,7 @@
   max-height: 80vh;
 }
 
-.footer {
-  align-self: center;
-  bottom: 0;
-  margin-top: 1rem;
-  padding: 1rem;
-  position: fixed;
-  width: 100%;
-}
+
 
 /*
 #iceLeft {
