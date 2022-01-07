@@ -9,6 +9,7 @@ function initialDrinks(drinksData) {
       <>
         {drinks.map((drink, index) => (
           <div
+            className="div"
             key={ drink.idDrink }
             data-testid={ `${index}-recipe-card` }
           >
@@ -35,13 +36,13 @@ function buttonsCategoriesDrinks(categoriesData) {
   if (drinks) {
     return (
       <>
-        {drinks.map((categorie) => (
+        {drinks.map((category) => (
           <button
             type="button"
-            key={ categorie.strCategory }
-            data-testid={ `${categorie.strCategory}-category-filter` }
+            key={ category.strCategory }
+            data-testid={ `${category.strCategory}-category-filter` }
           >
-            { categorie.strCategory }
+            { category.strCategory }
           </button>
         )).filter((categorieFilter, index) => index < limitbuttons)}
       </>
@@ -69,7 +70,7 @@ function DrinkPage() {
     <div>
       <Header title="Bebidas" showButton />
       {buttonsCategoriesDrinks(categoriesDrinksData)}
-      {initialDrinks(drinksData)}
+      {/* {initialDrinks(drinksData)} */}
     </div>
   );
 }
