@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import '../css/InitialPage.css';
 import Header from '../components/Header';
 
 function initialDrinks(drinksData) {
@@ -30,29 +31,12 @@ function initialDrinks(drinksData) {
   }
 }
 
-function buttonsCategoriesDrinks(categoriesData) {
-  const limitbuttons = 5;
-  const { drinks } = categoriesData;
-  if (drinks) {
-    return (
-      <>
-        {drinks.map((category) => (
-          <button
-            type="button"
-            key={ category.strCategory }
-            data-testid={ `${category.strCategory}-category-filter` }
-          >
-            { category.strCategory }
-          </button>
-        )).filter((categorieFilter, index) => index < limitbuttons)}
-      </>
-    );
-  }
-}
-
 function DrinkPage() {
   const [drinksData, setdrinksData] = useState([]);
   const [categoriesDrinksData, setCategoriesDrinksData] = useState([]);
+  const [renderDrinksCategoryData, setRenderDrinksCategoryData] = useState([]);
+  const [categoryResult, setCategoryResult] = useState([]);
+  const [renderCategoryResult, setRenderCategoryResult] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
@@ -66,11 +50,50 @@ function DrinkPage() {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    async function fetchData() {
+      const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${renderDrinksCategoryData}`);
+      const data = await response.json();
+      setCategoryResult(data);
+    }
+    fetchData();
+  }, [renderDrinksCategoryData]);
+
+  function renderCategory(category) {
+    if (category === renderDrinksCategoryData) {
+      setRenderCategoryResult(!renderCategoryResult);
+    } else {
+      setRenderDrinksCategoryData(category);
+      setRenderCategoryResult(true);
+    }
+  }
+
+  function buttonsCategoriesDrinks() {
+    const limitbuttons = 5;
+    const { drinks } = categoriesDrinksData;
+    if (drinks) {
+      return (
+        <>
+          {drinks.map((category) => (
+            <button
+              type="button"
+              key={ category.strCategory }
+              data-testid={ `${category.strCategory}-category-filter` }
+              onClick={ () => { renderCategory(category.strCategory); } }
+            >
+              { category.strCategory }
+            </button>
+          )).filter((categorieFilter, index) => index < limitbuttons)}
+        </>
+      );
+    }
+  }
+
   return (
     <div>
       <Header title="Bebidas" showButton />
-      {buttonsCategoriesDrinks(categoriesDrinksData)}
-      {/* {initialDrinks(drinksData)} */}
+      {buttonsCategoriesDrinks()}
+      {renderCategoryResult ? initialDrinks(categoryResult) : initialDrinks(drinksData)}
     </div>
   );
 }

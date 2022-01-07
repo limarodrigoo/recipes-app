@@ -38,7 +38,6 @@ function MealPage() {
   const [renderMealsCategoryData, setRenderMealsCategoryData] = useState([]);
   const [categoryResult, setCategoryResult] = useState([]);
   const [renderCategoryResult, setRenderCategoryResult] = useState(false);
-  const [renderInitialMeals, setRenderInitialMeals] = useState(true);
 
   useEffect(() => {
     async function fetchData() {
@@ -64,15 +63,15 @@ function MealPage() {
   function renderCategory(category) {
     if (category === renderMealsCategoryData) {
       setRenderCategoryResult(!renderCategoryResult);
+    } else {
+      setRenderMealsCategoryData(category);
+      setRenderCategoryResult(true);
     }
-    setRenderMealsCategoryData(category);
   }
 
-  function buttonsCategoriesDrinks() {
+  function buttonsCategoriesMeals() {
     const limitbuttons = 5;
     const { meals } = categoriesMealsData;
-    console.log(categoryResult);
-    console.log(renderMealsCategoryData);
     if (meals) {
       return (
         <>
@@ -81,7 +80,7 @@ function MealPage() {
               type="button"
               key={ category.strCategory }
               data-testid={ `${category.strCategory}-category-filter` }
-              onClick={ () => { renderCategory(category.strCategory); setRenderInitialMeals(false); } }
+              onClick={ () => { renderCategory(category.strCategory); } }
             >
               { category.strCategory }
             </button>
@@ -94,9 +93,8 @@ function MealPage() {
   return (
     <div>
       <Header title="Comidas" showButton />
-      {buttonsCategoriesDrinks()}
+      {buttonsCategoriesMeals()}
       {renderCategoryResult ? initialMeals(categoryResult) : initialMeals(mealsData)}
-
     </div>
   );
 }
