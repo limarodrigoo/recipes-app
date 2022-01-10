@@ -1,0 +1,30 @@
+/* stylelint-disable linebreaks */
+.footer {
+  bottom: 0;
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1rem;
+  padding: 1rem;
+  position: fixed;
+  text-align: center;
+  width: 100%;
+}
+
+.drinkButton {
+  background-image: url('../images/drinkIcon.svg');
+  height: 44px;
+  width: 45px;
+}
+
+.mealButton {
+  background-image: url('../images/mealIcon.svg');
+  height: 44px;
+  width: 45px;
+}
+
+.exploreButton {
+  background-image: url('../images/exploreIcon.svg');
+  height: 44px;
+  width: 45px;
+}
