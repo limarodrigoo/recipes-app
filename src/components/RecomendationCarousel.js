@@ -13,7 +13,8 @@ export default function RecomendationCarousel({ data, limit }) {
     } else {
       settype('Meal');
     }
-  });
+  }, [typeOfRecomendation]);
+
   const recomendations = data[typeOfRecomendation].slice(0, limit);
   console.log(recomendations[0][`str${type}Thumb`]);
   return (
@@ -102,4 +103,5 @@ export default function RecomendationCarousel({ data, limit }) {
 
 RecomendationCarousel.propTypes = {
   data: PropTypes.objectOf(PropTypes.array).isRequired,
+  limit: PropTypes.number.isRequired,
 };
