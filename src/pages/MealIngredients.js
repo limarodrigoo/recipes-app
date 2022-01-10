@@ -1,14 +1,12 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from '../components/Header';
 
-class MealIngredients extends React.Component {
-  render() {
-    return (
-      <div>
-        <Header title="Explorar Ingredientes" showButton={ false } />
-      </div>
-    );
-  }
+function MealIngredients() {
+  const [ categories, setCategories ] = useState([]);
+  const getApiIngredients = async () => {
+    const request = await fetch('https://www.themealdb.com/api/json/v1/1/list.php?i=list');
+  };
+  const requestJson = await request.json();
+  set
 }
-
 export default MealIngredients;
