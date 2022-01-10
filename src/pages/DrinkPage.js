@@ -83,7 +83,7 @@ function DrinkPage() {
             >
               { category.strCategory }
             </button>
-          )).filter((categorieFilter, index) => index < limitbuttons)}
+          )).filter((categoryFilter, index) => index < limitbuttons)}
         </>
       );
     }

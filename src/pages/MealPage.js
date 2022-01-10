@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import '../css/InitialPage.css';
+// import { array } from 'prop-types';
 import Header from '../components/Header';
 
 function initialMeals(mealsData) {
@@ -38,6 +39,8 @@ function MealPage() {
   const [renderMealsCategoryData, setRenderMealsCategoryData] = useState([]);
   const [categoryResult, setCategoryResult] = useState([]);
   const [renderCategoryResult, setRenderCategoryResult] = useState(false);
+  const [renderAllCategories, setRenderAllCategories] = useState(false);
+  const [allCategoriesData, setAllCategoriesData] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
@@ -69,6 +72,22 @@ function MealPage() {
     }
   }
 
+  function renderAllCategoriesMeals() {
+    const { meals } = categoriesMealsData;
+    const limit = 5;
+    const arrayM = [];
+    for (let index = 0; index < limit; index += 1) {
+      arrayM.push(meals[index].strCategory);
+    }
+    console.log(arrayM);
+    // arrayM.map((item) => (fetchDataAll(item)));
+    return (
+      <>
+        {arrayM.map((item) => <h1 key={ item }>{item}</h1>)}
+      </>
+    );
+  }
+
   function buttonsCategoriesMeals() {
     const limitbuttons = 5;
     const { meals } = categoriesMealsData;
@@ -84,12 +103,30 @@ function MealPage() {
             >
               { category.strCategory }
             </button>
-          )).filter((categorieFilter, index) => index < limitbuttons)}
+          )).filter((categoryFilter, index) => index < limitbuttons)}
+          <button
+            type="button"
+            data-testid="all-category-filter"
+            onClick={ () => {
+              renderAllCategoriesMeals(); setRenderAllCategories(!renderAllCategories);
+            } }
+          >
+            All
+          </button>
         </>
       );
     }
   }
 
+  if (renderAllCategories) {
+    return (
+      <div>
+        <Header title="Comidas" showButton />
+        {buttonsCategoriesMeals()}
+        {renderAllCategoriesMeals()}
+      </div>
+    );
+  }
   return (
     <div>
       <Header title="Comidas" showButton />
