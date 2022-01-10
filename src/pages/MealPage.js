@@ -72,6 +72,15 @@ function MealPage() {
     }
   }
 
+  function allCategories(arrayM) {
+    arrayM.map((item) => async function fetchData() {
+      const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${item}`);
+      const data = await response.json();
+      setAllCategoriesData(data);
+      console.log(allCategoriesData);
+    });
+  }
+
   function renderAllCategoriesMeals() {
     const { meals } = categoriesMealsData;
     const limit = 5;
@@ -80,10 +89,10 @@ function MealPage() {
       arrayM.push(meals[index].strCategory);
     }
     console.log(arrayM);
-    // arrayM.map((item) => (fetchDataAll(item)));
+    allCategories(arrayM);
     return (
       <>
-        {arrayM.map((item) => <h1 key={ item }>{item}</h1>)}
+        oi
       </>
     );
   }
