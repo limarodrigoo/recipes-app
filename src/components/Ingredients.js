@@ -12,7 +12,6 @@ export default function Ingredients(props) {
     const measure = data[indexMeasure];
     if (ingredient !== '' && ingredient !== null && ingredient !== undefined) {
       ingredients.push([ingredient, measure]);
-      console.log(ingredient);
     }
   }
   return (

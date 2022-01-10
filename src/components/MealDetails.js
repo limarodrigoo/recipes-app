@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Container, Image } from 'react-bootstrap';
 import Ingredients from './Ingredients';
 import Recomendations from './Recomendations';
 
@@ -22,11 +23,12 @@ export default function MealDetails(props) {
   const embedUrl = `//www.youtube.com/embed/${videoId}`;
 
   return (
-    <>
-      <img
+    <Container>
+      <Image
         src={ data.strMealThumb }
         alt="img"
         data-testid="recipe-photo"
+        height="300px"
       />
       <h3 data-testid="recipe-title">
         {' '}
@@ -46,8 +48,8 @@ export default function MealDetails(props) {
         title={ data.strMeal }
         src={ embedUrl }
       />
-      <Recomendations />
-    </>
+      <Recomendations type="meal" />
+    </Container>
   );
 }
 

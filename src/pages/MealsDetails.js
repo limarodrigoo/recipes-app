@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Container } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import MealDetails from '../components/MealDetails';
 
@@ -16,10 +17,10 @@ export default function MealsDetails() {
   }, [id]);
 
   return (
-    <div>
+    <Container>
       {mealDetails ? (
         <MealDetails data={ mealDetails.meals[0] } />
       ) : null}
-    </div>
+    </Container>
   );
 }
