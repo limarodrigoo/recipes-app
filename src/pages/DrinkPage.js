@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import '../css/InitialPage.css';
 import Header from '../components/Header';
 
@@ -9,22 +10,24 @@ function initialDrinks(drinksData) {
     return (
       <>
         {drinks.map((drink, index) => (
-          <div
-            className="div"
-            key={ drink.idDrink }
-            data-testid={ `${index}-recipe-card` }
-          >
-            <h3
-              data-testid={ `${index}-card-name` }
+          <Link to={ `/bebidas/${drink.idDrink}` } key={ drink.idDrink }>
+            <div
+              className="div"
+              key={ drink.idDrink }
+              data-testid={ `${index}-recipe-card` }
             >
-              {drink.strDrink}
-            </h3>
-            <img
-              data-testid={ `${index}-card-img` }
-              src={ drink.strDrinkThumb }
-              alt=""
-            />
-          </div>
+              <h3
+                data-testid={ `${index}-card-name` }
+              >
+                {drink.strDrink}
+              </h3>
+              <img
+                data-testid={ `${index}-card-img` }
+                src={ drink.strDrinkThumb }
+                alt=""
+              />
+            </div>
+          </Link>
         )).filter((drinkFilter, index) => index < limitDrinks)}
       </>
     );
