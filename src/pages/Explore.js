@@ -1,32 +1,30 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import Header from '../components/Header';
 
 function Explore() {
-  const history = useHistory();
-  const goDrink = () => history.push('/explorar/bebidas');
-  const goMeal = () => history.push('/explorar/comidas');
-
   return (
     <>
-      <Header />
+      <Header title="Explorar" />
       <section>
-        <button
-          type="button"
-          name="Explorar Comidas"
-          data-testid="explore-food"
-          onClick={ goMeal }
-        >
-          Explorar Comidas
-        </button>
-        <button
-          type="button"
-          name="Explorar Bebidas"
-          data-testid="explore-drinks"
-          onClick={ goDrink }
-        >
-          Explorar Bebidas
-        </button>
+        <Link to="/explorar/comidas">
+          <button
+            type="button"
+            name="Explorar Comidas"
+            data-testid="explore-food"
+          >
+            Explorar Comidas
+          </button>
+        </Link>
+        <Link to="/explorar/bebidas">
+          <button
+            type="button"
+            name="Explorar Bebidas"
+            data-testid="explore-drinks"
+          >
+            Explorar Bebidas
+          </button>
+        </Link>
       </section>
     </>
   );
