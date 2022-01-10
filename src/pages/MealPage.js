@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import '../css/InitialPage.css';
-// import { array } from 'prop-types';
 import Header from '../components/Header';
 
 function initialMeals(mealsData) {
@@ -40,7 +39,6 @@ function MealPage() {
   const [categoryResult, setCategoryResult] = useState([]);
   const [renderCategoryResult, setRenderCategoryResult] = useState(false);
   const [renderAllCategories, setRenderAllCategories] = useState(false);
-  const [allCategoriesData, setAllCategoriesData] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
@@ -72,27 +70,10 @@ function MealPage() {
     }
   }
 
-  function allCategories(arrayM) {
-    arrayM.map((item) => async function fetchData() {
-      const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${item}`);
-      const data = await response.json();
-      setAllCategoriesData(data);
-      console.log(allCategoriesData);
-    });
-  }
-
   function renderAllCategoriesMeals() {
-    const { meals } = categoriesMealsData;
-    const limit = 5;
-    const arrayM = [];
-    for (let index = 0; index < limit; index += 1) {
-      arrayM.push(meals[index].strCategory);
-    }
-    console.log(arrayM);
-    allCategories(arrayM);
     return (
       <>
-        oi
+        {initialMeals(mealsData)}
       </>
     );
   }
@@ -115,7 +96,7 @@ function MealPage() {
           )).filter((categoryFilter, index) => index < limitbuttons)}
           <button
             type="button"
-            data-testid="all-category-filter"
+            data-testid="All-category-filter"
             onClick={ () => {
               renderAllCategoriesMeals(); setRenderAllCategories(!renderAllCategories);
             } }

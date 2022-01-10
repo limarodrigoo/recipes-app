@@ -37,6 +37,7 @@ function DrinkPage() {
   const [renderDrinksCategoryData, setRenderDrinksCategoryData] = useState([]);
   const [categoryResult, setCategoryResult] = useState([]);
   const [renderCategoryResult, setRenderCategoryResult] = useState(false);
+  const [renderAllCategories, setRenderAllCategories] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
@@ -68,6 +69,14 @@ function DrinkPage() {
     }
   }
 
+  function renderAllCategoriesDrinks() {
+    return (
+      <>
+        {initialDrinks(drinksData)}
+      </>
+    );
+  }
+
   function buttonsCategoriesDrinks() {
     const limitbuttons = 5;
     const { drinks } = categoriesDrinksData;
@@ -84,11 +93,29 @@ function DrinkPage() {
               { category.strCategory }
             </button>
           )).filter((categoryFilter, index) => index < limitbuttons)}
+          <button
+            type="button"
+            data-testid="All-category-filter"
+            onClick={ () => {
+              renderAllCategoriesDrinks(); setRenderAllCategories(!renderAllCategories);
+            } }
+          >
+            All
+          </button>
         </>
       );
     }
   }
 
+  if (renderAllCategories) {
+    return (
+      <div>
+        <Header title="Comidas" showButton />
+        {buttonsCategoriesDrinks()}
+        {renderAllCategoriesDrinks()}
+      </div>
+    );
+  }
   return (
     <div>
       <Header title="Bebidas" showButton />
