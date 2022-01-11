@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
+import { Link } from 'react-router-dom';
 import IngredientsContext from '../context/IngredientsContext';
 import Header from '../components/Header';
 import '../css/InitialPage.css';
@@ -11,22 +12,24 @@ function initialMeals(mealsData) {
     return (
       <>
         {meals.map((meal, index) => (
-          <div
-            className="div"
-            key={ meal.idMeal }
-            data-testid={ `${index}-recipe-card` }
-          >
-            <h3
-              data-testid={ `${index}-card-name` }
+          <Link to={ `/comidas/${meal.idMeal}` } key={ meal.idMeal }>
+            <div
+              className="div"
+              key={ meal.idMeal }
+              data-testid={ `${index}-recipe-card` }
             >
-              {meal.strMeal}
-            </h3>
-            <img
-              data-testid={ `${index}-card-img` }
-              src={ meal.strMealThumb }
-              alt=""
-            />
-          </div>
+              <h3
+                data-testid={ `${index}-card-name` }
+              >
+                {meal.strMeal}
+              </h3>
+              <img
+                data-testid={ `${index}-card-img` }
+                src={ meal.strMealThumb }
+                alt=""
+              />
+            </div>
+          </Link>
         )).filter((mealFilter, index) => index < limitMeals)}
       </>
     );
@@ -40,7 +43,6 @@ function MealPage() {
   const [categoryResult, setCategoryResult] = useState([]);
   const [renderCategoryResult, setRenderCategoryResult] = useState(false);
   const [renderAllCategories, setRenderAllCategories] = useState(false);
-  const [allCategoriesData, setAllCategoriesData] = useState([]);
 
   const { ingredient } = useContext(IngredientsContext);
 
@@ -81,27 +83,10 @@ function MealPage() {
     }
   }
 
-  function allCategories(arrayM) {
-    arrayM.map((item) => async function fetchData() {
-      const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${item}`);
-      const data = await response.json();
-      setAllCategoriesData(data);
-      console.log(allCategoriesData);
-    });
-  }
-
   function renderAllCategoriesMeals() {
-    const { meals } = categoriesMealsData;
-    const limit = 5;
-    const arrayM = [];
-    for (let index = 0; index < limit; index += 1) {
-      arrayM.push(meals[index].strCategory);
-    }
-    console.log(arrayM);
-    allCategories(arrayM);
     return (
       <>
-        oi
+        {initialMeals(mealsData)}
       </>
     );
   }
@@ -124,7 +109,7 @@ function MealPage() {
           )).filter((categoryFilter, index) => index < limitbuttons)}
           <button
             type="button"
-            data-testid="all-category-filter"
+            data-testid="All-category-filter"
             onClick={ () => {
               renderAllCategoriesMeals(); setRenderAllCategories(!renderAllCategories);
             } }

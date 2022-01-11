@@ -4,6 +4,8 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Login from './pages/Login';
 import MealPage from './pages/MealPage';
+import MealsDetails from './pages/MealsDetails';
+import DrinksDetails from './pages/DrinksDetails';
 import DrinkPage from './pages/DrinkPage';
 import Explore from './pages/Explore';
 import ExploreMeal from './pages/ExploreMeal';
@@ -22,10 +24,10 @@ function App() {
     <div>
       <Switch>
         <Route exact path="/" component={ Login } />
-        <Route exact path="/comidas" component={ MealPage } />
         <Route exact path="/bebidas" component={ DrinkPage } />
-        <Route exact path="/comidas/{id-da-receita}" />
-        <Route exact path="/bebidas/{id-da-receita}" />
+        <Route exact path="/comidas" component={ MealPage } />
+        <Route exact path="/comidas/:id" component={ MealsDetails } />
+        <Route exact path="/bebidas/:id" component={ DrinksDetails } />
         <Route exact path="/comidas/{id-da-receita}/in-progress" />
         <Route exact path="/bebidas/{id-da-receita}/in-progress" />
         <Route exact path="/explorar" component={ Explore } />
