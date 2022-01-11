@@ -4,6 +4,7 @@ import { Container, Image } from 'react-bootstrap';
 import Ingredients from './Ingredients';
 import Recomendations from './Recomendations';
 import StartRecipeBtn from './StartRecipeBtn';
+import FavoriteBtn from './FavoriteBtn';
 
 export default function MealDetails({ data }) {
   // Regex feito seguindo sugestao de resposta do stack overflow https://stackoverflow.com/questions/21607808/convert-a-youtube-video-url-to-embed-code/21607897
@@ -49,6 +50,15 @@ export default function MealDetails({ data }) {
       />
       <Recomendations type="meal" />
       <StartRecipeBtn id={ data.idMeal } type="meals" />
+      <FavoriteBtn
+        id={ data.idMeal }
+        type="comida"
+        area={ data.strArea }
+        category={ data.strCategory }
+        alcoholicOrNot=""
+        name={ data.strMeal }
+        image={ data.strMealThumb }
+      />
     </Container>
   );
 }

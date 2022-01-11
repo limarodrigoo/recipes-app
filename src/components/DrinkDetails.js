@@ -4,6 +4,7 @@ import { Container, Image } from 'react-bootstrap';
 import Ingredients from './Ingredients';
 import Recomendations from './Recomendations';
 import StartRecipeBtn from './StartRecipeBtn';
+import FavoriteBtn from './FavoriteBtn';
 
 export default function DrinkDetails(props) {
   const { data } = props;
@@ -28,6 +29,14 @@ export default function DrinkDetails(props) {
       </p>
       <Recomendations type="drink" />
       <StartRecipeBtn id={ data.idDrink } type="cocktails" />
+      <FavoriteBtn
+        id={ data.idDrink }
+        type="bebida"
+        category={ data.strCategoty }
+        alcoholicOrNot={ data.strAlcoholic }
+        name={ data.strDrink }
+        image={ data.strDrinkThumb }
+      />
     </Container>
   );
 }
