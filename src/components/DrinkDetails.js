@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import { Container, Image } from 'react-bootstrap';
 import Ingredients from './Ingredients';
 import Recomendations from './Recomendations';
+import StartRecipeBtn from './StartRecipeBtn';
+import FavoriteBtn from './FavoriteBtn';
+import ShareBtn from './ShareBtn';
 
 export default function DrinkDetails(props) {
   const { data } = props;
@@ -26,7 +29,27 @@ export default function DrinkDetails(props) {
         {data.strInstructions}
       </p>
       <Recomendations type="drink" />
-
+      <StartRecipeBtn id={ data.idDrink } type="cocktails" />
+      <Container>
+        <div className="buttons-details">
+          <FavoriteBtn
+            className="align-items-center"
+            id={ data.idDrink }
+            type="bebida"
+            category={ data.strCategory }
+            alcoholicOrNot={ data.strAlcoholic }
+            name={ data.strDrink }
+            image={ data.strDrinkThumb }
+            dataTestId="favorite-btn"
+          />
+          <ShareBtn
+            id={ data.idDrink }
+            type="bebidas"
+            dataTestId="share-btn"
+            className="align-items-center"
+          />
+        </div>
+      </Container>
     </Container>
   );
 }
