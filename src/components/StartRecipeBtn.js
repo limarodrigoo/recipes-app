@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 export default function StartRecipeBtn({ id, type }) {
   const [recipeDone, setrecipeDone] = useState(false);
@@ -77,3 +78,8 @@ export default function StartRecipeBtn({ id, type }) {
     </div>
   );
 }
+
+StartRecipeBtn.propTypes = {
+  id: PropTypes.number.isRequired,
+  type: PropTypes.string.isRequired,
+};
