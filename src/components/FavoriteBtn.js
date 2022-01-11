@@ -4,7 +4,7 @@ import blackHeartIcon from '../images/blackHeartIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 
 export default function FavoriteBtn({ id,
-  type, area, category, alcoholicOrNot, name, image }) {
+  type, area, category, alcoholicOrNot, name, image, dataTestId }) {
   const allFavorites = JSON.parse(localStorage.getItem('favoriteRecipes'));
 
   const checkFavorite = () => {
@@ -46,7 +46,12 @@ export default function FavoriteBtn({ id,
   };
 
   return (
-    <button type="button" data-testid="favorite-btn" onClick={ setFavoriteOrNot }>
+    <button
+      type="button"
+      data-testid={ dataTestId }
+      onClick={ setFavoriteOrNot }
+      src={ isFavorite ? blackHeartIcon : whiteHeartIcon }
+    >
       <img
         src={ isFavorite ? blackHeartIcon : whiteHeartIcon }
         alt="favorite-icon"
@@ -69,4 +74,5 @@ FavoriteBtn.propTypes = {
   alcoholicOrNot: PropTypes.string,
   name: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
+  dataTestId: PropTypes.string.isRequired,
 };

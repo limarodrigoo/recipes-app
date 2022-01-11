@@ -5,6 +5,7 @@ import Ingredients from './Ingredients';
 import Recomendations from './Recomendations';
 import StartRecipeBtn from './StartRecipeBtn';
 import FavoriteBtn from './FavoriteBtn';
+import ShareBtn from './ShareBtn';
 
 export default function DrinkDetails(props) {
   const { data } = props;
@@ -29,14 +30,26 @@ export default function DrinkDetails(props) {
       </p>
       <Recomendations type="drink" />
       <StartRecipeBtn id={ data.idDrink } type="cocktails" />
-      <FavoriteBtn
-        id={ data.idDrink }
-        type="bebida"
-        category={ data.strCategoty }
-        alcoholicOrNot={ data.strAlcoholic }
-        name={ data.strDrink }
-        image={ data.strDrinkThumb }
-      />
+      <Container>
+        <div className="buttons-details">
+          <FavoriteBtn
+            className="align-items-center"
+            id={ data.idDrink }
+            type="bebida"
+            category={ data.strCategory }
+            alcoholicOrNot={ data.strAlcoholic }
+            name={ data.strDrink }
+            image={ data.strDrinkThumb }
+            dataTestId="favorite-btn"
+          />
+          <ShareBtn
+            id={ data.idDrink }
+            type="bebidas"
+            dataTestId="share-btn"
+            className="align-items-center"
+          />
+        </div>
+      </Container>
     </Container>
   );
 }
