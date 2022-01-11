@@ -1,11 +1,6 @@
-<<<<<<< HEAD
 import React, { useEffect, useState, useContext } from 'react';
-import IngredientsContext from '../context/IngredientsContext';
-=======
-import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import '../css/InitialPage.css';
->>>>>>> fe479e8212d5a259e859414f4ac02f6c0d34bdf1
+import IngredientsContext from '../context/IngredientsContext';
 import Header from '../components/Header';
 import '../css/InitialPage.css';
 
