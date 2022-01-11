@@ -11,7 +11,13 @@ export default function LoginProvider({ children }) {
 
   const [loginInput, setLogin] = useState(INITIAL_STATE);
 
-  const contextValue = { loginInput, setLogin };
+  const contextValue = {
+    loginInput,
+    setLogin,
+  };
+
+  console.log(contextValue.meals);
+
   return (
     <LoginContext.Provider value={ contextValue }>
       { children }

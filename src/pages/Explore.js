@@ -1,14 +1,33 @@
 import React from 'react';
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import Header from '../components/Header';
 
-class Explore extends React.Component {
-  render() {
-    return (
-      <div>
-        <Header title="Explorar" showButton={ false } />
-      </div>
-    );
-  }
+function Explore() {
+  return (
+    <>
+      <Header title="Explorar" />
+      <section>
+        <Link to="/explorar/comidas">
+          <button
+            type="button"
+            name="Explorar Comidas"
+            data-testid="explore-food"
+          >
+            Explorar Comidas
+          </button>
+        </Link>
+        <Link to="/explorar/bebidas">
+          <button
+            type="button"
+            name="Explorar Bebidas"
+            data-testid="explore-drinks"
+          >
+            Explorar Bebidas
+          </button>
+        </Link>
+      </section>
+    </>
+  );
 }
 
 export default Explore;
