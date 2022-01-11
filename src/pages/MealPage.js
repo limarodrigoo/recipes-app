@@ -61,7 +61,7 @@ function MealPage() {
       setCategoriesMealsData(categoryData);
     }
     fetchData();
-  }, []);
+  }, [ingredient]);
 
   useEffect(() => {
     async function fetchData() {

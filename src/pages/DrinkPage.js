@@ -58,7 +58,7 @@ function DrinkPage() {
       setCategoriesDrinksData(categorieData);
     }
     fetchData();
-  }, []);
+  }, [ingredient]);
 
   useEffect(() => {
     async function fetchData() {
