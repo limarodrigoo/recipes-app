@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import '../css/InitialPage.css';
-// import { array } from 'prop-types';
+import React, { useEffect, useState, useContext } from 'react';
+import IngredientsContext from '../context/IngredientsContext';
 import Header from '../components/Header';
+import '../css/InitialPage.css';
 
 function initialMeals(mealsData) {
   const { meals } = mealsData;
@@ -42,11 +42,20 @@ function MealPage() {
   const [renderAllCategories, setRenderAllCategories] = useState(false);
   const [allCategoriesData, setAllCategoriesData] = useState([]);
 
+  const { ingredient } = useContext(IngredientsContext);
+
   useEffect(() => {
     async function fetchData() {
-      const mealResponse = await fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=');
-      const mealData = await mealResponse.json();
-      setmealsData(mealData);
+      if (ingredient) {
+        const INGREDIENTS = `https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}`;
+        const data = await fetch(INGREDIENTS);
+        const ingredientData = await data.json();
+        setmealsData(ingredientData);
+      } else {
+        const mealResponse = await fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=');
+        const mealData = await mealResponse.json();
+        setmealsData(mealData);
+      }
       const categoryResponse = await fetch('https://www.themealdb.com/api/json/v1/1/list.php?c=list');
       const categoryData = await categoryResponse.json();
       setCategoriesMealsData(categoryData);

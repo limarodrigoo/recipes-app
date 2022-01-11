@@ -15,6 +15,7 @@ function ExploreDrink() {
 
   return (
     <>
+
       <Header />
       <Link to="/explorar/bebidas/ingredientes">
         <button

@@ -15,6 +15,7 @@ import ProfilePage from './pages/ProfilePage';
 import FavoriteMeals from './pages/FavoriteMeals';
 import DoneMeals from './pages/DoneMeals';
 import Footer from './components/Footer';
+import IngredientsCard from './pages/IngredientsCard';
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
         <Route exact path="/perfil" component={ ProfilePage } />
         <Route exact path="/receitas-feitas" component={ DoneMeals } />
         <Route exact path="/receitas-favoritas" component={ FavoriteMeals } />
+        <Route exact path="/comidas" component={ IngredientsCard } />
       </Switch>
       <Footer />
     </div>

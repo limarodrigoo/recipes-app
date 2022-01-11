@@ -1,5 +1,6 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useContext } from 'react';
 import { Link } from 'react-router-dom';
+import IngredientsContext from '../context/IngredientsContext';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
@@ -12,7 +13,7 @@ export default function DrinkIngredients() {
     const requestJson = await request.json();
     setCategories(requestJson.drinks);
   }, []);
-
+  const { setIngredient } = useContext(IngredientsContext);
   useEffect(() => {
     getApiIngredients();
   }, [getApiIngredients]);
@@ -27,11 +28,11 @@ export default function DrinkIngredients() {
             to="/bebidas"
             key={ index }
             data-testid={ `${index}-ingredient-card` }
+            onClick={ () => setIngredient(element.strIngredient1) }
           >
             <div>
               <img
                 data-testid={ `${index}-card-img` }
-                // www.thecocktaildb.com/images/ingredients/gin-Small.png
                 src={ `https://www.thecocktaildb.com/images/ingredients/${element.strIngredient1}-Small.png` }
                 alt="thumb"
               />
