@@ -8,7 +8,7 @@ function ExploreDrink() {
     const request = await fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php');
     const requestJson = await request.json();
     setRandomDrink(requestJson.drinks);
-  });
+  }, []);
   useEffect(() => {
     getApi();
   });
