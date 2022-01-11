@@ -5,7 +5,7 @@ class DoneMeals extends React.Component {
   render() {
     return (
       <div>
-        <Header title="Receitas Feitas" showButton={ false } />
+        DoneRecipes
       </div>
     );
   }
