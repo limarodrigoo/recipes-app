@@ -1,0 +1,10 @@
+.buttons-details {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 80px;
+}
+
+.fixed-bottom {
+  justify-content: center;
+  width: 100%;
+}
