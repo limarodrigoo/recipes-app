@@ -20,7 +20,7 @@ import Footer from './components/Footer';
 
 function App() {
   return (
-    <div className="meals">
+    <div>
       <Switch>
         <Route exact path="/" component={ Login } />
         <Route exact path="/bebidas" component={ DrinkPage } />

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Container, Image } from 'react-bootstrap';
 import Ingredients from './Ingredients';
 import Recomendations from './Recomendations';
+import StartRecipeBtn from './StartRecipeBtn';
 
 export default function DrinkDetails(props) {
   const { data } = props;
@@ -26,7 +27,7 @@ export default function DrinkDetails(props) {
         {data.strInstructions}
       </p>
       <Recomendations type="drink" />
-
+      <StartRecipeBtn id={ data.idDrink } type="cocktails" />
     </Container>
   );
 }

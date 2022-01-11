@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import MealDetails from '../components/MealDetails';
+import DetailsProvider from '../context/DetailsProvider';
 
 export default function MealsDetails() {
   const [mealDetails, setmealDetails] = useState();
@@ -14,13 +15,15 @@ export default function MealsDetails() {
       setmealDetails(detailsData);
     }
     fetchData();
-  }, [id]);
+  }, [setmealDetails, id]);
 
   return (
-    <Container>
-      {mealDetails ? (
-        <MealDetails data={ mealDetails.meals[0] } />
-      ) : null}
-    </Container>
+    <DetailsProvider>
+      <Container>
+        {mealDetails ? (
+          <MealDetails data={ mealDetails.meals[0] } />
+        ) : null}
+      </Container>
+    </DetailsProvider>
   );
 }

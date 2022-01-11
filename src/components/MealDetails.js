@@ -3,10 +3,9 @@ import PropTypes from 'prop-types';
 import { Container, Image } from 'react-bootstrap';
 import Ingredients from './Ingredients';
 import Recomendations from './Recomendations';
+import StartRecipeBtn from './StartRecipeBtn';
 
-export default function MealDetails(props) {
-  const { data } = props;
-
+export default function MealDetails({ data }) {
   // Regex feito seguindo sugestao de resposta do stack overflow https://stackoverflow.com/questions/21607808/convert-a-youtube-video-url-to-embed-code/21607897
 
   function getVideoId(url) {
@@ -49,6 +48,7 @@ export default function MealDetails(props) {
         src={ embedUrl }
       />
       <Recomendations type="meal" />
+      <StartRecipeBtn id={ data.idMeal } type="meals" />
     </Container>
   );
 }

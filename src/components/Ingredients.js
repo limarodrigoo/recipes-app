@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default function Ingredients(props) {
-  const { data } = props;
+export default function Ingredients({ data }) {
   const ingredients = [];
   const maxIngredients = 20;
   for (let i = 1; i <= maxIngredients; i += 1) {
