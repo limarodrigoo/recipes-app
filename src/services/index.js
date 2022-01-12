@@ -2,7 +2,7 @@ export const treatsRecipeDone = () => JSON.parse(localStorage.getItem('doneRecip
 
 export const arrRecipesFilter = (arrOfObj, filterChosen) => {
   let result = arrOfObj;
-  if (filterChosen !== 'all') result = arrOfObj.filter((el) => el.type === filterText);
+  if (filterChosen !== 'all') result = arrOfObj.filter((el) => el.type === filterChosen);
 
   return result;
 };
