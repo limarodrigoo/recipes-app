@@ -28,3 +28,14 @@
   height: 44px;
   width: 45px;
 }
+
+.cardImage {
+  width: 150px;
+}
+
+.shareButton {
+  background-image: url('../images/shareIcon.svg');
+  background-size: 100%;
+  height: 44px;
+  width: 45px;
+}

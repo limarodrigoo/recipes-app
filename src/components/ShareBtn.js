@@ -3,9 +3,12 @@ import { Alert } from 'react-bootstrap';
 import copy from 'clipboard-copy';
 import PropTypes from 'prop-types';
 import shareIcon from '../images/shareIcon.svg';
+import '../css/Footer.css';
 
-export default function ShareBtn({ id, type, dataTestId }) {
+export default function ShareBtn({ id, type, dataTestId, local }) {
+  let recipesPage = false;
   const url = `http://localhost:3000/${type}/${id}`;
+  if (local === '/receitas-feitas') recipesPage = true;
 
   const [show, setShow] = useState(false);
 
@@ -15,7 +18,8 @@ export default function ShareBtn({ id, type, dataTestId }) {
     setShow(true);
     setTimeout(() => setShow(false), time);
   };
-  return (
+
+  const resultGlobal = (
     <button
       data-testid={ dataTestId }
       type="button"
@@ -25,10 +29,24 @@ export default function ShareBtn({ id, type, dataTestId }) {
       {show ? (<Alert variant="success">Link copiado!</Alert>) : null}
     </button>
   );
+
+  const resultDoneRecipes = (
+    <button
+      data-testid={ dataTestId }
+      type="button"
+      onClick={ onClick }
+      className="shareButton"
+      src={ shareIcon }
+    >
+      {show ? (<Alert variant="success">Link copiado!</Alert>) : null}
+    </button>
+  );
+  return recipesPage ? resultDoneRecipes : resultGlobal;
 }
 
 ShareBtn.propTypes = {
   id: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   dataTestId: PropTypes.string.isRequired,
+  local: PropTypes.string.isRequired,
 };
