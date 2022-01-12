@@ -15,7 +15,7 @@ import DrinkIngredients from './pages/DrinkIngredients';
 import SearchByArea from './pages/SearchByArea';
 import ProfilePage from './pages/ProfilePage';
 import FavoriteMeals from './pages/FavoriteMeals';
-import DoneMeals from './pages/DoneMeals';
+import DoneRecipes from './pages/DoneRecipes';
 import Footer from './components/Footer';
 
 function App() {
@@ -44,7 +44,7 @@ function App() {
         />
         <Route exact path="/explorar/comidas/area" component={ SearchByArea } />
         <Route exact path="/perfil" component={ ProfilePage } />
-        <Route exact path="/receitas-feitas" component={ DoneMeals } />
+        <Route exact path="/receitas-feitas" component={ DoneRecipes } />
         <Route exact path="/receitas-favoritas" component={ FavoriteMeals } />
       </Switch>
       <Footer />

@@ -50,7 +50,7 @@ function Footer() {
         data-testid="explore-bottom-btn"
         src={ exploreImage }
         onClick={ handleClick }
-        className="mealButton"
+        className="exploreButton"
       />
       <button
         name="food"
@@ -59,7 +59,7 @@ function Footer() {
         data-testid="food-bottom-btn"
         onClick={ handleClick }
         src={ mealImage }
-        className="exploreButton"
+        className="mealButton"
       />
     </div>
   );
