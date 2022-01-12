@@ -33,7 +33,7 @@ const filterButtons = (setState) => {
         Drinks
       </button>
     </div>);
-  return [result];
+  return result;
 };
 
 export default filterButtons;

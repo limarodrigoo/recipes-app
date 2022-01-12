@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Header from '../components/Header';
-import { treatsRecipeDone } from '../services/index.js';
+import { treatsRecipeDone } from '../services/index';
 import FoodCards from '../components/doneRecipes/FoodCards';
 
 const DoneRecipes = () => {

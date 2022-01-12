@@ -84,7 +84,7 @@ function DrinkPage() {
     const { drinks } = categoriesDrinksData;
     if (drinks) {
       return (
-        <div className='header'>
+        <div className="header">
           {drinks.map((category) => (
             <button
               type="button"
@@ -111,7 +111,7 @@ function DrinkPage() {
 
   if (renderAllCategories) {
     return (
-      <div className='divItems'>
+      <div className="divItems">
         <Header title="Comidas" showButton />
         {buttonsCategoriesDrinks()}
         {renderAllCategoriesDrinks()}
@@ -119,7 +119,7 @@ function DrinkPage() {
     );
   }
   return (
-    <div className='divItems'>
+    <div className="divItems">
       <Header title="Bebidas" showButton />
       {buttonsCategoriesDrinks()}
       {renderCategoryResult ? initialDrinks(categoryResult) : initialDrinks(drinksData)}
