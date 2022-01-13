@@ -2,13 +2,13 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import Header from '../components/Header';
 
-function ProfilePage () {
+function ProfilePage() {
   const { email } = JSON.parse(localStorage.getItem('user'));
   const history = useHistory();
   const handleExitBtn = () => {
     localStorage.clear();
     history.push('/');
-  }
+  };
 
   return (
     <>
@@ -41,6 +41,6 @@ function ProfilePage () {
       </div>
     </>
   );
-  }
+}
 
 export default ProfilePage;
