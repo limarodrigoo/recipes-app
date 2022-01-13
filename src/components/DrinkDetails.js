@@ -31,9 +31,8 @@ export default function DrinkDetails(props) {
       <Recomendations type="drink" />
       <StartRecipeBtn id={ data.idDrink } type="cocktails" />
       <Container>
-        <div 
-        // className="buttons-details"
-        >
+        <div>
+          {/* // className="buttons-details"  */}
           <FavoriteBtn
             // className="align-items-center"
             id={ data.idDrink }
