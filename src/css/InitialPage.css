@@ -1,8 +1,8 @@
 .divItems {
   align-items: center;
-  border-style: dashed;
-  border-radius: 5px;
   border-color: black;
+  border-radius: 5px;
+  border-style: dashed;
   bottom: 0;
   display: table;
   margin-left: auto;
@@ -11,22 +11,22 @@
 }
 
 .header {
-  width: fit-content;
-  height: fit-content;
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
   bottom: 0;
+  display: flex;
+  flex-direction: row;
+  height: fit-content;
+  justify-content: center;
   margin-left: auto;
   margin-right: auto;
   margin-top: 1rem;
+  width: fit-content;
 }
 
-img {
-  width: 200px;
+/* img {
   height: 200px;
+  width: 200px;
 }
 
 * {
   background-color: #0fa36b;
-}
+} */

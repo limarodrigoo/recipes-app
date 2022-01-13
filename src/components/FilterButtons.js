@@ -1,6 +1,6 @@
 import React from 'react';
 
-const filterButtons = (setState) => {
+const FilterButtons = ({ setState }) => {
   const handleClick = ({ target }) => {
     const { name } = target;
     setState(name);
@@ -36,4 +36,4 @@ const filterButtons = (setState) => {
   return result;
 };
 
-export default filterButtons;
+export default FilterButtons;

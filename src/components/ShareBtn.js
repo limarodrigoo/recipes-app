@@ -24,6 +24,7 @@ export default function ShareBtn({ id, type, dataTestId, local }) {
       data-testid={ dataTestId }
       type="button"
       onClick={ onClick }
+      src={ shareIcon }
     >
       <img src={ shareIcon } alt="share-icon" />
       {show ? (<Alert variant="success">Link copiado!</Alert>) : null}
