@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router';
 // import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import Login from './pages/Login';
 import MealPage from './pages/MealPage';
 import MealsDetails from './pages/MealsDetails';
@@ -17,6 +17,7 @@ import ProfilePage from './pages/ProfilePage';
 import FavoriteMeals from './pages/FavoriteMeals';
 import DoneRecipes from './pages/DoneRecipes';
 import Footer from './components/Footer';
+import IngredientsCard from './pages/IngredientsCard';
 
 function App() {
   return (
@@ -46,6 +47,7 @@ function App() {
         <Route exact path="/perfil" component={ ProfilePage } />
         <Route exact path="/receitas-feitas" component={ DoneRecipes } />
         <Route exact path="/receitas-favoritas" component={ FavoriteMeals } />
+        <Route exact path="/comidas" component={ IngredientsCard } />
       </Switch>
       <Footer />
     </div>
