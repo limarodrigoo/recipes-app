@@ -50,7 +50,7 @@ export default function FavoriteRecipeCard({ recipe, setHadUpdate, hadUpdate, in
           />
           <ShareBtn
             id={ id }
-            type={ type }
+            type={ `${type}s` }
             dataTestId={ `${index}-horizontal-share-btn` }
           />
         </div>
