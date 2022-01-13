@@ -10,11 +10,10 @@ function initialMeals(mealsData) {
 
   if (meals) {
     return (
-      <>
+      <div className="divItems">
         {meals.map((meal, index) => (
           <Link to={ `/comidas/${meal.idMeal}` } key={ meal.idMeal }>
             <div
-              className="div"
               key={ meal.idMeal }
               data-testid={ `${index}-recipe-card` }
             >
@@ -31,7 +30,7 @@ function initialMeals(mealsData) {
             </div>
           </Link>
         )).filter((mealFilter, index) => index < limitMeals)}
-      </>
+      </div>
     );
   }
 }
@@ -97,7 +96,7 @@ function MealPage() {
     const { meals } = categoriesMealsData;
     if (meals) {
       return (
-        <>
+        <div className="header">
           {meals.map((category) => (
             <button
               type="button"
@@ -117,7 +116,7 @@ function MealPage() {
           >
             All
           </button>
-        </>
+        </div>
       );
     }
   }

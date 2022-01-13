@@ -3,10 +3,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
+import '../css/InitialPage.css';
 
 function Header({ title, showButton }) {
   render();
   return (
+
     <header>
       {/* // className="header-container" style={ { display: 'flex' } } */}
       <button

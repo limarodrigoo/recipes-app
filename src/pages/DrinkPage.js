@@ -13,7 +13,6 @@ function initialDrinks(drinksData) {
         {drinks.map((drink, index) => (
           <Link to={ `/bebidas/${drink.idDrink}` } key={ drink.idDrink }>
             <div
-              // className="div"
               key={ drink.idDrink }
               data-testid={ `${index}-recipe-card` }
             >
@@ -102,7 +101,7 @@ function DrinkPage() {
     const { drinks } = categoriesDrinksData;
     if (drinks) {
       return (
-        <>
+        <div className="header">
           {drinks.map((category) => (
             <button
               type="button"
@@ -122,14 +121,14 @@ function DrinkPage() {
           >
             All
           </button>
-        </>
+        </div>
       );
     }
   }
 
   if (renderAllCategories) {
     return (
-      <div>
+      <div className="divItems">
         <Header title="Comidas" showButton />
         {buttonsCategoriesDrinks()}
         {renderAllCategoriesDrinks()}
@@ -137,7 +136,7 @@ function DrinkPage() {
     );
   }
   return (
-    <div>
+    <div className="divItems">
       <Header title="Bebidas" showButton />
       {buttonsCategoriesDrinks()}
       {renderCategoryResult ? initialDrinks(categoryResult) : initialDrinks(drinksData)}
