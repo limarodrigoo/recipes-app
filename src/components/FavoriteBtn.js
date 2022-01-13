@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 
 export default function FavoriteBtn({ id,
-  type, area, category, alcoholicOrNot, name, image, dataTestId }) {
+  type, area, category,
+  alcoholicOrNot, name, image, dataTestId, setHadUpdate, hadUpdate }) {
+  const { location: { pathname } } = useHistory();
+  console.log(`HISTORY ${pathname}`);
   const allFavorites = JSON.parse(localStorage.getItem('favoriteRecipes'));
-
+  console.log(`Area no btn ${area}`);
   const checkFavorite = () => {
     if (allFavorites) {
       return allFavorites.some((recipes) => id === recipes.id);
@@ -39,7 +43,12 @@ export default function FavoriteBtn({ id,
       const newArrayofFavorites = [...allFavorites, currentRecipe];
       return localStorage.setItem('favoriteRecipes', JSON.stringify(newArrayofFavorites));
     }
-    setisFavorite(false);
+    if (setHadUpdate) {
+      setHadUpdate(!hadUpdate);
+    }
+    if (pathname !== '/receitas-favoritas') {
+      setisFavorite(false);
+    }
     const newArrayofFavorites = allFavorites.filter((recipes) => recipes.id !== id);
     console.log(newArrayofFavorites);
     return localStorage.setItem('favoriteRecipes', JSON.stringify(newArrayofFavorites));
@@ -75,4 +84,6 @@ FavoriteBtn.propTypes = {
   name: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
   dataTestId: PropTypes.string.isRequired,
+  setHadUpdate: PropTypes.func.isRequired,
+  hadUpdate: PropTypes.bool.isRequired,
 };

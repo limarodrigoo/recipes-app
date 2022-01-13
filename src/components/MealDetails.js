@@ -23,7 +23,7 @@ export default function MealDetails({ data }) {
 
   const videoId = getVideoId(data.strYoutube);
   const embedUrl = `//www.youtube.com/embed/${videoId}`;
-
+  console.log(data.strArea);
   return (
     <Container>
       <Image
