@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useCallback, useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import IngredientsContext from '../context/IngredientsContext';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 export default function DrinkIngredients() {
+  const history = useHistory();
   const [categories, setCategories] = useState([]);
   const NUM_MAX = 12;
 
@@ -13,7 +14,15 @@ export default function DrinkIngredients() {
     const requestJson = await request.json();
     setCategories(requestJson.drinks);
   }, []);
+
   const { setIngredient } = useContext(IngredientsContext);
+
+  const setIngredientHistory = (element) => {
+    console.log(element);
+    setIngredient(element.strIngredient1);
+    history.push('/bebidas');
+  };
+
   useEffect(() => {
     getApiIngredients();
   }, [getApiIngredients]);
@@ -24,11 +33,12 @@ export default function DrinkIngredients() {
 
       {
         categories.slice(0, NUM_MAX).map((element, index) => (
-          <Link
+          <button
+            type="button"
             to="/bebidas"
             key={ index }
             data-testid={ `${index}-ingredient-card` }
-            onClick={ () => setIngredient(element.strIngredient1) }
+            onClick={ () => setIngredientHistory(element) }
           >
             <div>
               <img
@@ -38,7 +48,7 @@ export default function DrinkIngredients() {
               />
               <h3 data-testid={ `${index}-card-name` }>{element.strIngredient1}</h3>
             </div>
-          </Link>
+          </button>
 
         ))
       }

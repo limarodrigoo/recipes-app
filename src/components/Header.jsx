@@ -7,7 +7,9 @@ import searchIcon from '../images/searchIcon.svg';
 function Header({ title, showButton }) {
   render();
   return (
-    <header className="header-container" style={ { display: 'flex' } }>
+    <header 
+    // className="header-container" style={ { display: 'flex' } }
+    >
       <button
         type="button"
         data-testid="profile-top-btn"

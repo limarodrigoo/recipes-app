@@ -31,9 +31,11 @@ export default function DrinkDetails(props) {
       <Recomendations type="drink" />
       <StartRecipeBtn id={ data.idDrink } type="cocktails" />
       <Container>
-        <div className="buttons-details">
+        <div 
+        // className="buttons-details"
+        >
           <FavoriteBtn
-            className="align-items-center"
+            // className="align-items-center"
             id={ data.idDrink }
             type="bebida"
             category={ data.strCategory }
@@ -46,7 +48,7 @@ export default function DrinkDetails(props) {
             id={ data.idDrink }
             type="bebidas"
             dataTestId="share-btn"
-            className="align-items-center"
+            // className="align-items-center"
           />
         </div>
       </Container>

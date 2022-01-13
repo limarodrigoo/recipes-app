@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import IngredientsContext from '../context/IngredientsContext';
 import Header from '../components/Header';
-import '../css/InitialPage.css';
+// import '../css/InitialPage.css';
 
 function initialDrinks(drinksData) {
   const { drinks } = drinksData;
@@ -13,7 +13,7 @@ function initialDrinks(drinksData) {
         {drinks.map((drink, index) => (
           <Link to={ `/bebidas/${drink.idDrink}` } key={ drink.idDrink }>
             <div
-              className="div"
+              // className="div"
               key={ drink.idDrink }
               data-testid={ `${index}-recipe-card` }
             >
@@ -47,10 +47,17 @@ function DrinkPage() {
 
   useEffect(() => {
     async function fetchData() {
+      // debugger;
       if (ingredient) {
-        const INGREDIENTS = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${ingredient}`;
+        const INGREDIENTS = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}`;
         const data = await fetch(INGREDIENTS);
         const ingredientData = await data.json();
+        if (ingredientData.drinks === null) {
+          return (
+            global.alert(
+              'Sinto muito, não encontramos nenhuma receita para ingredientes.',
+            ));
+        }
         setdrinksData(ingredientData);
       } else {
         const drinksResponse = await fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=');
@@ -103,7 +110,7 @@ function DrinkPage() {
               data-testid={ `${category.strCategory}-category-filter` }
               onClick={ () => { renderCategory(category.strCategory); } }
             >
-              { category.strCategory }
+              {category.strCategory}
             </button>
           )).filter((categoryFilter, index) => index < limitbuttons)}
           <button

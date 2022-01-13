@@ -48,6 +48,7 @@ function MealPage() {
 
   useEffect(() => {
     async function fetchData() {
+      // debugger;
       if (ingredient) {
         const INGREDIENTS = `https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}`;
         const data = await fetch(INGREDIENTS);
