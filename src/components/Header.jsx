@@ -45,7 +45,7 @@ function Header({ title, showButton }) {
             Buscar
           </object>
         </button>) }
-      { showSearchBar && <SearchBar/> }
+      { showSearchBar && <SearchBar /> }
     </header>
   );
 }
