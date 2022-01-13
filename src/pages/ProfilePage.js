@@ -3,7 +3,8 @@ import { useHistory } from 'react-router-dom';
 import Header from '../components/Header';
 
 function ProfilePage() {
-  const { email } = JSON.parse(localStorage.getItem('user'));
+  // const { email } = JSON.parse(localStorage.getItem('user'));
+  // console.log(email)
   const history = useHistory();
   const handleExitBtn = () => {
     localStorage.clear();
@@ -12,9 +13,11 @@ function ProfilePage() {
 
   return (
     <>
-      <Header title="Perfil" showButton={ false } />
       <div>
-        <p data-testid="profile-email">{ email }</p>
+        <Header title="Perfil" showButton={ false } />
+      </div>
+      <div>
+        <p data-testid="profile-email">email@mail.com</p>
         <div>
           <button
             onClick={ () => history.push('/receitas-feitas') }
