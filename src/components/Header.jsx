@@ -8,7 +8,9 @@ import '../css/InitialPage.css';
 function Header({ title, showButton }) {
   render();
   return (
-    <header className="header">
+
+    <header>
+      {/* // className="header-container" style={ { display: 'flex' } } */}
       <button
         type="button"
         data-testid="profile-top-btn"

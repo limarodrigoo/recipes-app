@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import '../css/InitialPage.css';
+import IngredientsContext from '../context/IngredientsContext';
 import Header from '../components/Header';
+// import '../css/InitialPage.css';
 
 function initialDrinks(drinksData) {
   const { drinks } = drinksData;
@@ -41,17 +42,33 @@ function DrinkPage() {
   const [renderCategoryResult, setRenderCategoryResult] = useState(false);
   const [renderAllCategories, setRenderAllCategories] = useState(false);
 
+  const { ingredient } = useContext(IngredientsContext);
+
   useEffect(() => {
     async function fetchData() {
-      const drinksResponse = await fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=');
-      const drinkData = await drinksResponse.json();
-      setdrinksData(drinkData);
+      // debugger;
+      if (ingredient) {
+        const INGREDIENTS = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}`;
+        const data = await fetch(INGREDIENTS);
+        const ingredientData = await data.json();
+        if (ingredientData.drinks === null) {
+          return (
+            global.alert(
+              'Sinto muito, não encontramos nenhuma receita para ingredientes.',
+            ));
+        }
+        setdrinksData(ingredientData);
+      } else {
+        const drinksResponse = await fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=');
+        const drinkData = await drinksResponse.json();
+        setdrinksData(drinkData);
+      }
       const response = await fetch('https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list');
       const categorieData = await response.json();
       setCategoriesDrinksData(categorieData);
     }
     fetchData();
-  }, []);
+  }, [ingredient]);
 
   useEffect(() => {
     async function fetchData() {
@@ -92,7 +109,7 @@ function DrinkPage() {
               data-testid={ `${category.strCategory}-category-filter` }
               onClick={ () => { renderCategory(category.strCategory); } }
             >
-              { category.strCategory }
+              {category.strCategory}
             </button>
           )).filter((categoryFilter, index) => index < limitbuttons)}
           <button

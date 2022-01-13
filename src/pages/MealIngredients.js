@@ -1,6 +1,6 @@
-// import React, { useState, useEffect, useCallback } from 'react';
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useContext } from 'react';
 import { Link } from 'react-router-dom';
+import IngredientsContext from '../context/IngredientsContext';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
@@ -14,6 +14,8 @@ export default function MealIngredients() {
     setCategories(requestJson.meals);
   }, []);
 
+  const { setIngredient } = useContext(IngredientsContext);
+
   useEffect(() => {
     getApiIngredients();
   }, [getApiIngredients]);
@@ -23,8 +25,9 @@ export default function MealIngredients() {
       {
         categories.slice(0, NUM_MAX).map((element, index) => (
           <Link
-            to={ `${index}` }
+            to="/comidas"
             key={ index }
+            onClick={ () => setIngredient(element.strIngredient) }
           >
             <section
               data-testid={ `${index}-ingredient-card` }
