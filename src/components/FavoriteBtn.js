@@ -8,9 +8,7 @@ export default function FavoriteBtn({ id,
   type, area, category,
   alcoholicOrNot, name, image, dataTestId, setHadUpdate, hadUpdate }) {
   const { location: { pathname } } = useHistory();
-  console.log(`HISTORY ${pathname}`);
   const allFavorites = JSON.parse(localStorage.getItem('favoriteRecipes'));
-  console.log(`Area no btn ${area}`);
   const checkFavorite = () => {
     if (allFavorites) {
       return allFavorites.some((recipes) => id === recipes.id);
@@ -19,7 +17,6 @@ export default function FavoriteBtn({ id,
   };
 
   const [isFavorite, setisFavorite] = useState(checkFavorite());
-  console.log(allFavorites);
 
   const setFavoriteOrNot = () => {
     const currentRecipe = {
@@ -31,8 +28,6 @@ export default function FavoriteBtn({ id,
       name,
       image,
     };
-    console.log(currentRecipe);
-    console.log(allFavorites);
     // se não tiver nada no localStorage
     if (allFavorites === null) {
       setisFavorite(true);
@@ -50,7 +45,6 @@ export default function FavoriteBtn({ id,
       setisFavorite(false);
     }
     const newArrayofFavorites = allFavorites.filter((recipes) => recipes.id !== id);
-    console.log(newArrayofFavorites);
     return localStorage.setItem('favoriteRecipes', JSON.stringify(newArrayofFavorites));
   };
 
