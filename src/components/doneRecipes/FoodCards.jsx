@@ -16,7 +16,7 @@ function FoodCards({ filterChosen, recipeObj }) {
     if (type === 'comida') history.push(`/comidas/${id}`);
   };
 
-  const result = arrFiltered.map((el, index) => {
+  const result = !arrFiltered ? null : arrFiltered.map((el, index) => {
     const { tags } = el;
     let tagsSpans = null;
     if (tags[0] !== undefined) {

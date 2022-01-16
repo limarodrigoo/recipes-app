@@ -17,7 +17,7 @@ function ExploreMeal() {
 
   return (
     <div>
-      <Header />
+      <Header title="Explorar Comidas" showButton={ false } />
       <Link to="/explorar/comidas/ingredientes">
         <button
           type="button"

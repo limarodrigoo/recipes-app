@@ -16,7 +16,7 @@ function ExploreDrink() {
   return (
     <>
 
-      <Header />
+      <Header title="Explorar Bebidas" showButton={ false } />
       <Link to="/explorar/bebidas/ingredientes">
         <button
           type="button"

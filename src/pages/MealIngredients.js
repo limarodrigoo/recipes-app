@@ -21,7 +21,7 @@ export default function MealIngredients() {
   }, [getApiIngredients]);
   return (
     <>
-      <Header />
+      <Header title="Explorar Ingredientes" showButton={ false } />
       {
         categories.slice(0, NUM_MAX).map((element, index) => (
           <Link
